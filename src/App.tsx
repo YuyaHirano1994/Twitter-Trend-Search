@@ -2,8 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 function App() {
-  // const urlAPI = "https://xzvrefmkp4.execute-api.ap-northeast-1.amazonaws.com/dev/twitter?query=chainsawman";
-
   const [searchWord, setSearchWord] = useState("");
 
   const createUrl = (searchWord: string) => {
@@ -16,23 +14,23 @@ function App() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     //名前が保存されたか確認するlog
-    console.log(searchWord);
-    clickHandler(searchWord);
+    getTweetCount(searchWord);
   };
 
   const handleChangeWord = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchWord(e.target.value);
+    if (e.target.value) {
+      setSearchWord(e.target.value);
+    }
   };
 
-  const clickHandler = async (searchWord: string) => {
+  const getTweetCount = async (searchWord: string) => {
     try {
-      let awsAPI = createUrl(searchWord);
+      const awsAPI = createUrl(searchWord);
       const res = await axios.get(awsAPI);
-      console.log(res.data);
+      console.log(res.data.data[0].tweet_count); //read specific data
     } catch (error) {
       console.log(error);
     }
-    console.log("hello");
   };
 
   return (
