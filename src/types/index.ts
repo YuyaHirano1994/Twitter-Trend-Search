@@ -1,5 +1,5 @@
 export type tweetData = {
-  startDate: number;
-  endDate: number;
-  tweet_count: number;
+  end: string;
+  start: string;
+  tweet_count: string;
 };
