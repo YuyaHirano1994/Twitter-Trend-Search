@@ -8,18 +8,18 @@ Using Twitter API, this application can display the number of tweets for a speci
 
 # Challenges
 
-I wanted to create an application using the API.
-I choose the Twitter API, for which there is not much information available on the Internet.
-I also wanted to use AWS a little, so I used those as well.
-The front was created with React and TypeScript.
+I wanted to create an application using the API.<br>
+I choose the Twitter API, for which there is not much information available on the Internet.<br>
+I also wanted to use AWS a little, so I used those as well.<br>
+The front was created with React and TypeScript.<br>
 
 # Built with
 
-React
-TypeScript
-tailwindCSS
-AWS Lambda
-AWS Gateway
+React<br>
+TypeScript<br>
+tailwindCSS<br>
+AWS Lambda<br>
+AWS Gateway<br>
 
 # Features
 
@@ -27,8 +27,8 @@ Use TwitterAPI to visually check the latest information.
 
 # Usage
 
-Just enter a keyword and press the search button.
-Note that special characters are not allowed.
+Just enter a keyword and press the search button.<br>
+Note that special characters are not allowed.<br>
 
 # Note
 
