@@ -47,7 +47,7 @@ function App() {
 
       let Month: number = newDate.getUTCMonth() + 1;
       let Day: number = newDate.getDate();
-      let editStartDate = Month.toString() + "月" + Day.toString() + "日";
+      let editStartDate = Month.toString() + "/" + Day.toString();
 
       return { start: editStartDate, end: tweetData.end, tweet_count: tweetData.tweet_count };
     });
