@@ -22,8 +22,13 @@ function App() {
   const createUrl = (searchWord: string) => {
     const api = process.env.REACT_APP_API_URL;
     let urlAPI = encodeURI(`${api}${searchWord}`);
+
+    console.log(urlAPI);
+
     return urlAPI;
   };
+
+  console.log(tweetDataList);
 
   const getTweetCount = async (searchWord: string) => {
     try {
