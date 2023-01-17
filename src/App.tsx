@@ -94,7 +94,8 @@ function App() {
         <form onSubmit={handleSubmit} className="p-8">
           <label>
             <p className="mr-4 mb-4">
-              Enter a keyword of your choice and <br></br>see a graph of the number of tweets for the past week.
+              Enter a keyword of your choice and <br></br>see a graph of the number of tweets for the past week.(per
+              hour)
             </p>
             <div className="flex items-center justify-center">
               <input
