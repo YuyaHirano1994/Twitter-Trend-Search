@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { tweetData } from "./types";
-import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
+import { CartesianGrid, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 import "./App.css";
 
 function App() {
@@ -47,14 +47,14 @@ function App() {
 
   const updateDateType = (arr: [tweetData]) => {
     const newTweetList = arr.map((tweetData) => {
-      let ts = Date.parse(tweetData.start);
+      let ts = Date.parse(tweetData.end);
       let newDate: Date = new Date(ts); // Mon Jan 09 2023 16:00:00 GMT-0800 (Pacific Standard Time) の形に生成されう
 
       let Month: number = newDate.getUTCMonth() + 1;
       let Day: number = newDate.getDate();
       let editStartDate = Month.toString() + "/" + Day.toString();
 
-      return { start: editStartDate, end: tweetData.end, tweet_count: tweetData.tweet_count };
+      return { start: tweetData.start, end: editStartDate, tweet_count: tweetData.tweet_count };
     });
 
     return newTweetList;
@@ -62,8 +62,8 @@ function App() {
 
   const checkSearchWord = (searchWord: string) => {
     // eslint-disable-next-line no-useless-escape
-    const regax = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^`{|}~]/);
-    if (regax.test(searchWord)) {
+    const regex = new RegExp(/[!"#$%&'()\*\+\-\.,\/:;<=>?@\[\\\]^`{|}~]/);
+    if (regex.test(searchWord)) {
       return false;
     } else {
       return true;
@@ -74,7 +74,7 @@ function App() {
     e.preventDefault();
     // 入力チェック
     if (checkSearchWord(searchWord)) {
-      const tweetCountList = getTweetCount(searchWord);
+      getTweetCount(searchWord);
     } else {
       setTweetDataList([]);
       setErrorMsg(["keyword is something wrong.", "Do not use special characters at the beginning of keywords."]);
@@ -139,7 +139,7 @@ function App() {
                   <tr className="whitespace-nowrap" />
                   {tweetDataList.map((tweetData, i) => (
                     <tr key={i}>
-                      <td className="px-6 py-4 text-sm text-gray-800"> {tweetData.start}</td>
+                      <td className="px-6 py-4 text-sm text-gray-800"> {tweetData.end}</td>
                       <td className="px-6 py-4 text-gray-800">{tweetData.tweet_count} tweet</td>
                     </tr>
                   ))}
@@ -161,7 +161,7 @@ function App() {
             }}
           >
             <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="start" />
+            <XAxis dataKey="end" />
             <YAxis dataKey="tweet_count" />
             <Line type="monotone" dataKey="tweet_count" stroke="#fff700" strokeWidth={2} />
             {/* <Legend /> */}
